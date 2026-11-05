@@ -1,5 +1,5 @@
 // ==========================================
-// INSTITUT MEDIKA NUSANTARA - SCRIPT
+// INSTITUT MEDIKA NUSANTARA - INTERACTIVE JS
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('open');
             const isOpen = mainNav.classList.contains('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
             menuToggle.textContent = isOpen ? '✕' : '☰';
         });
 
@@ -59,22 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. ANIMASI MUNCUL SAAT SCROLL (Fade-in)
-    const observerOptions = {
-        threshold: 0.15
-    };
+    // 4. ANIMASI SCROLL REVEAL ELEGANT
+    const reveals = document.querySelectorAll('.reveal');
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
+    const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        reveals.forEach(reveal => {
+            const revealTop = reveal.getBoundingClientRect().top;
+            const revealPoint = 100;
+
+            if (revealTop < windowHeight - revealPoint) {
+                reveal.classList.add('active');
             }
         });
-    }, observerOptions);
+    };
 
-    document.querySelectorAll('.fade-in-section').forEach(section => {
-        observer.observe(section);
-    });
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll(); // Trigger initial load
 
 });

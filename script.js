@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. APPOINTMENT FORM TERHUBUNG KE WHATSAPP
+    // 3. APPOINTMENT FORM TERHUBUNG LANGSUNG KE WHATSAPP
     const appointmentForm = document.getElementById('appointmentForm');
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Mencegah reload halaman
             
             const patientName = document.getElementById('patientName').value.trim();
             const service = document.getElementById('service').value;
@@ -54,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('message').value.trim();
 
             if (patientName && service && date) {
-                // Nomor WhatsApp tujuan (sesuai nomor yang terlampir di website)
+                // Nomor WhatsApp Tujuan (+62 896-7332-0727)
                 const whatsappNumber = "6289673320727"; 
 
-                // Format teks pesan yang akan dikirim otomatis ke WhatsApp
+                // Format Teks Pesan Otomatis
                 const text = `Halo Institut Medika Nusantara,\n\nSaya ingin mengajukan permohonan Janji Temu dengan detail berikut:\n\n` +
                              `• *Nama Pasien*: ${patientName}\n` +
                              `• *Layanan*: Poli ${service.toUpperCase()}\n` +
@@ -65,14 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
                              `• *Catatan*: ${message ? message : '-'}\n\n` +
                              `Mohon konfirmasinya. Terima kasih.`;
 
-                // Encode teks agar aman dibaca oleh URL WhatsApp
+                // Encode pesan agar format karakter (spasi, enter, symbol) tidak rusak
                 const encodedText = encodeURIComponent(text);
 
-                // Buat link WhatsApp API
+                // Buat tautan WA langsung
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
 
-                // Buka WhatsApp di tab/aplikasi baru
-                window.open(whatsappURL, '_blank');
+                // Langsung alihkan / buka aplikasi WhatsApp
+                window.location.href = whatsappURL;
                 
                 // Reset form setelah dikirim
                 appointmentForm.reset();

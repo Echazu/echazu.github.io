@@ -42,62 +42,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. APPOINTMENT FORM TERHUBUNG LANGSUNG KE WHATSAPP
+    // 3. LOGIC APPOINTMENT FORM KE WHATSAPP
     const appointmentForm = document.getElementById('appointmentForm');
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Mencegah reload halaman
-            
+            e.preventDefault();
             const patientName = document.getElementById('patientName').value.trim();
             const service = document.getElementById('service').value;
             const date = document.getElementById('date').value;
             const message = document.getElementById('message').value.trim();
 
             if (patientName && service && date) {
-                // Nomor WhatsApp Tujuan (+62 896-7332-0727)
                 const whatsappNumber = "6289673320727"; 
-
-                // Format Teks Pesan Otomatis
-                const text = `Halo Institut Medika Nusantara,\n\nSaya ingin mengajukan permohonan Janji Temu dengan detail berikut:\n\n` +
+                const text = `Halo Institut Medika Nusantara,\n\nSaya ingin mengajukan permohonan Janji Temu:\n\n` +
                              `• *Nama Pasien*: ${patientName}\n` +
                              `• *Layanan*: Poli ${service.toUpperCase()}\n` +
                              `• *Tanggal Rencana*: ${date}\n` +
                              `• *Catatan*: ${message ? message : '-'}\n\n` +
                              `Mohon konfirmasinya. Terima kasih.`;
 
-                // Encode pesan agar format karakter (spasi, enter, symbol) tidak rusak
-                const encodedText = encodeURIComponent(text);
-
-                // Buat tautan WA langsung
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-
-                // Langsung alihkan / buka aplikasi WhatsApp
-                window.location.href = whatsappURL;
-                
-                // Reset form setelah dikirim
+                window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
                 appointmentForm.reset();
-            } else {
-                alert('Mohon lengkapi data nama, layanan, dan tanggal terlebih dahulu.');
             }
         });
     }
 
-    // 4. ANIMASI SCROLL REVEAL ELEGANT
-    const reveals = document.querySelectorAll('.reveal');
+    // 4. LOAD DYNAMIC DATA DARI ADMIN (BERITA, DOKTER, KONTAK)
+    loadDynamicContent();
 
+    function loadDynamicContent() {
+        // A. LOAD DOKTER DARI ADMIN
+        const docContainer = document.querySelector('.doctor-placeholder');
+        const doctorData = JSON.parse(localStorage.getItem('imn_doctor_data') || '[]');
+
+        if (docContainer && doctorData.length > 0) {
+            let docHTML = `<div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); text-align: left;">`;
+            doctorData.forEach(doc => {
+                docHTML += `
+                    <div class="service-card" style="box-shadow: var(--shadow-sm);">
+                        <div class="service-icon">👨‍⚕️</div>
+                        <h3>${doc.name}</h3>
+                        <p style="color: var(--blue-accent); font-weight:700; margin-bottom:4px;">${doc.spec}</p>
+                        <small style="color: var(--text-light);">${doc.sched}</small>
+                    </div>
+                `;
+            });
+            docHTML += `</div>`;
+            docContainer.innerHTML = docHTML;
+            docContainer.style.background = 'transparent';
+            docContainer.style.border = 'none';
+        }
+
+        // B. LOAD KONTAK DARI ADMIN
+        const cntData = JSON.parse(localStorage.getItem('imn_contact_data') || '{}');
+        if (cntData.address) {
+            const items = document.querySelectorAll('.contact-item p');
+            if (items.length >= 4) {
+                items[0].textContent = cntData.address;
+                items[1].textContent = cntData.phone;
+                items[2].textContent = cntData.email;
+                items[3].textContent = cntData.hours;
+            }
+        }
+    }
+
+    // 5. ANIMASI SCROLL REVEAL ELEGANT
+    const reveals = document.querySelectorAll('.reveal');
     const revealOnScroll = () => {
         const windowHeight = window.innerHeight;
         reveals.forEach(reveal => {
-            const revealTop = reveal.getBoundingClientRect().top;
-            const revealPoint = 100;
-
-            if (revealTop < windowHeight - revealPoint) {
+            if (reveal.getBoundingClientRect().top < windowHeight - 100) {
                 reveal.classList.add('active');
             }
         });
     };
-
     window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Trigger initial load
-
+    revealOnScroll();
 });

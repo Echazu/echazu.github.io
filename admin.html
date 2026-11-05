@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMN Quick News Publisher | Luxury Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #0f2b48;
+            --navy-dark: #08192c;
+            --blue-accent: #3182ce;
+            --blue-light: #edf2f7;
+            --white: #ffffff;
+            --off-white: #f8fafc;
+            --border: #e2e8f0;
+            --text: #1a202c;
+            --text-light: #718096;
+            --shadow: 0 20px 40px rgba(15, 43, 72, 0.08);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, rgba(49, 130, 206, 0.08), transparent 40%), var(--off-white);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .admin-wrapper {
+            width: 100%;
+            max-width: 640px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .admin-header {
+            background: var(--navy-dark);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .admin-header span {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(49, 130, 206, 0.2);
+            color: #63b3ed;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+
+        .admin-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            color: var(--white);
+        }
+
+        .admin-header p {
+            color: #a0aec0;
+            font-size: 0.85rem;
+        }
+
+        .admin-body {
+            padding: 35px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--navy);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"],
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            background: var(--off-white);
+            color: var(--text);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--blue-accent);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.12);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--blue-light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .checkbox-container:hover {
+            background: #e2e8f0;
+        }
+
+        .checkbox-container input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--blue-accent);
+            cursor: pointer;
+        }
+
+        .checkbox-container label {
+            margin: 0;
+            cursor: pointer;
+            color: var(--text);
+            text-transform: none;
+            font-weight: 600;
+            font-size: 0.86rem;
+        }
+
+        .btn-publish {
+            width: 100%;
+            height: 52px;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+            box-shadow: 0 6px 20px rgba(15, 43, 72, 0.2);
+        }
+
+        .btn-publish:hover {
+            background: var(--blue-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(49, 130, 206, 0.3);
+        }
+
+        .admin-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .admin-body {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-wrapper">
+        <div class="admin-header">
+            <span>IMN Publisher Panel</span>
+            <h1>Quick News Center</h1>
+            <p>Tambah informasi atau berita resmi secara instan langsung dari ponsel Anda.</p>
+        </div>
+
+        <div class="admin-body">
+            <form id="newsForm">
+                <div class="form-group">
+                    <label for="newsTitle">Judul Utama (Title)</label>
+                    <input type="text" id="newsTitle" placeholder="Contoh: Peresmian Layanan Rawat Inap VIP IMN" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="newsSub">Sub-Judul / Ringkasan Singkat</label>
+                    <input type="text" id="newsSub" placeholder="Contoh: Memberikan kenyamanan paripurna bagi pemulihan pasien..." required>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div>
+                            <label for="newsTime">Waktu Publikasi</label>
+                            <input type="datetime-local" id="newsTime" required>
+                        </div>
+                        <div style="display: flex; flex-direction: column; justify-content: flex-end;">
+                            <div class="checkbox-container" onclick="document.getElementById('useImage').click()">
+                                <input type="checkbox" id="useImage" onclick="event.stopPropagation()" onchange="toggleImageInput()">
+                                <label for="useImage">Sertakan Gambar</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="imageUrlGroup" style="display: none;">
+                    <label for="newsImage">URL Gambar Berita</label>
+                    <input type="text" id="newsImage" placeholder="https://images.unsplash.com/... (tempel link foto)">
+                </div>
+
+                <div class="form-group">
+                    <label for="newsContent">Isi Berita Lengkap</label>
+                    <textarea id="newsContent" rows="5" placeholder="Tuliskan detail informasi atau pengumuman selengkapnya di sini..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-publish">
+                    <span>Kirim Berita ke WhatsApp IMN</span>
+                    <span>→</span>
+                </button>
+            </form>
+
+            <div class="admin-footer">
+                <p>© 2026 Institut Medika Nusantara — Internal Publisher</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Otomatis isi waktu saat ini
+        window.addEventListener('DOMContentLoaded', () => {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('newsTime').value = now.toISOString().slice(0,16);
+        });
+
+        function toggleImageInput() {
+            const useImage = document.getElementById('useImage').checked;
+            const group = document.getElementById('imageUrlGroup');
+            group.style.display = useImage ? 'block' : 'none';
+        }
+
+        document.getElementById('newsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('newsTitle').value.trim();
+            const sub = document.getElementById('newsSub').value.trim();
+            const time = document.getElementById('newsTime').value;
+            const useImage = document.getElementById('useImage').checked;
+            const image = useImage ? document.getElementById('newsImage').value.trim() : 'Tanpa gambar';
+            const content = document.getElementById('newsContent').value.trim();
+
+            // Format pesan rapi untuk dikirim via WhatsApp admin IMN (+62 896-7332-0727)
+            const whatsappNumber = "6289673320727"; 
+            const text = `📢 *BERITA & INFORMASI RESMI IMN*\n\n` +
+                         `📌 *Judul*: ${title}\n` +
+                         `📝 *Sub-Judul*: ${sub}\n` +
+                         `⏰ *Waktu*: ${time}\n` +
+                         `🖼️ *Gambar*: ${image}\n\n` +
+                         `📄 *Isi Berita*:\n${content}\n\n` +
+                         `_Dipublikasikan melalui Admin Panel Institut Medika Nusantara_`;
+
+            const encodedText = encodeURIComponent(text);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+            window.open(whatsappURL, '_blank');
+        });
+    </script>
+</body>
+</html>

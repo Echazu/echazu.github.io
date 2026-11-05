@@ -57,7 +57,7 @@
     <main>
 
         <!-- =========================
-             HERO SECTION (BERANDA)
+             HERO SECTION (BERANDA) - FOTO GEDUNG TANPA NAMA
         ========================== -->
         <section id="home" class="hero-fullscreen">
             <div class="container hero-container">
@@ -96,10 +96,10 @@
                     </div>
                 </div>
 
-                <!-- HERO VISUAL WITH ANIMATION -->
+                <!-- HERO VISUAL: FOTO ARSITEKTUR GEDUNG MEDIS NETRAL (TANPA TULISAN/NAMA) -->
                 <div class="hero-visual">
                     <div class="hero-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=1200&auto=format&fit=crop" alt="Institut Medika Nusantara" class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?q=80&w=1200&auto=format&fit=crop" alt="Gedung Rumah Sakit Modern" class="hero-image">
                     </div>
 
                     <div class="floating-card emergency-card float-anim-1">
@@ -378,7 +378,7 @@
         </section>
 
         <!-- =========================
-             INFORMATION
+             INFORMATION (KARTU STATIS TANPA EFEK GERAK SAAT DISENTUH)
         ========================== -->
         <section id="information" class="section information-section">
             <div class="container">
@@ -389,27 +389,47 @@
                 </div>
 
                 <div class="information-grid reveal">
-                    <article class="information-card">
+                    <!-- KARTU INFORMASI STATIS (CLASS info-card-static) -->
+                    <article class="information-card info-card-static">
                         <span class="info-tag">PATIENT GUIDE</span>
                         <h3>Panduan Pasien</h3>
                         <p>Informasi yang membantu pasien memahami proses pelayanan di IMN.</p>
                         <a href="#">Buka Patient Guide →</a>
                     </article>
 
-                    <article class="information-card">
+                    <article class="information-card info-card-static">
                         <span class="info-tag">NEWS</span>
                         <h3>Berita & Pengumuman</h3>
                         <p>Informasi terbaru mengenai layanan, kegiatan, dan pengumuman IMN.</p>
                         <a href="#">Lihat informasi →</a>
                     </article>
 
-                    <!-- KARTU FEEDBACK YANG SUDAH DIHUBUNGKAN KE FEEDBACK.HTML -->
-                    <article class="information-card">
+                    <article class="information-card info-card-static">
                         <span class="info-tag">FEEDBACK</span>
                         <h3>Feedback & Complaint</h3>
                         <p>Sampaikan pengalaman, masukan, maupun kebutuhan Anda kepada IMN.</p>
                         <a href="feedback.html">Sampaikan feedback →</a>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             RUANG KHUSUS: WALL OF APPRECIATION (TESTIMONI PUJIAN PASIEN ANONIM)
+        ========================== -->
+        <section class="section appreciation-section" style="background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+            <div class="container">
+                <div class="section-heading centered reveal">
+                    <span class="section-label">PATIENT EXPERIENCES</span>
+                    <h2>Wall of <span>Appreciation.</span></h2>
+                    <p>Berbagai apresiasi dan pujian dari pasien yang telah disensor namanya demi menjaga privasi.</p>
+                </div>
+
+                <div id="appreciationGrid" class="appreciation-grid reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <!-- Konten akan dimuat otomatis dari data feedback pujian -->
+                    <div style="background: var(--white); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border); text-align: center; color: var(--text-light);">
+                        <p>Belum ada ulasan pujian yang ditampilkan saat ini.</p>
+                    </div>
                 </div>
             </div>
         </section>

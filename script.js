@@ -1,10 +1,10 @@
 // ==========================================
-// INSTITUT MEDIKA NUSANTARA - INTERACTIVE JS
+// INSTITUT MEDIKA NUSANTARA - SCRIPT
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. MOBILE MENU TOGGLE (Hamburger Menu)
+    // 1. MOBILE MENU TOGGLE
     const menuToggle = document.getElementById('menuToggle');
     const mainNav = document.getElementById('mainNav');
 
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             mainNav.classList.toggle('open');
             const isOpen = mainNav.classList.contains('open');
-            menuToggle.setAttribute('aria-expanded', isOpen);
             menuToggle.textContent = isOpen ? '✕' : '☰';
         });
 
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 mainNav.classList.remove('open');
                 menuToggle.textContent = '☰';
-                menuToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
@@ -28,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. DARK MODE TOGGLE
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('imn_theme');
+    
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
         if (themeToggle) themeToggle.textContent = '☀';
@@ -42,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. APPOINTMENT FORM HANDLING
+    // 3. APPOINTMENT FORM
     const appointmentForm = document.getElementById('appointmentForm');
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', (e) => {
@@ -52,29 +51,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const date = document.getElementById('date').value;
 
             if (patientName && service && date) {
-                alert(`Terima kasih, ${patientName}! Permintaan janji temu untuk layanan ${service.toUpperCase()} pada tanggal ${date} telah berhasil dikirim.`);
+                alert(`Terima kasih, ${patientName}! Permintaan janji temu untuk ${service.toUpperCase()} pada tanggal ${date} telah berhasil dikirim.`);
                 appointmentForm.reset();
             } else {
-                alert('Mohon lengkapi data formulir terlebih dahulu.');
+                alert('Mohon lengkapi formulir terlebih dahulu.');
             }
         });
     }
 
-    // 4. ANIMATION ON SCROLL (Fitur Animasi Muncul Saat Digulir)
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-
-    const checkScroll = () => {
-        const triggerBottom = window.innerHeight * 0.85;
-
-        animatedElements.forEach(el => {
-            const elTop = el.getBoundingClientRect().top;
-            if (elTop < triggerBottom) {
-                el.classList.add('visible');
-            }
-        });
+    // 4. ANIMASI MUNCUL SAAT SCROLL (Fade-in)
+    const observerOptions = {
+        threshold: 0.15
     };
 
-    window.addEventListener('scroll', checkScroll);
-    checkScroll(); // Jalankan sekali saat dimuat
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+        observer.observe(section);
+    });
 
 });

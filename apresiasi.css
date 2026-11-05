@@ -1,0 +1,10 @@
+/* KARTU INFORMASI STATIS (TIDAK BERGERAK / HOVER EFFECT DINONAKTIFKAN) */
+.info-card-static {
+    transition: none !important;
+    transform: none !important;
+}
+
+.info-card-static:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}

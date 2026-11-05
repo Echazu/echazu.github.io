@@ -1,575 +1,530 @@
-/* =========================================================
-   INSTITUT MEDIKA NUSANTARA - RESPONSIVE & ANIMATED CSS
-========================================================= */
-
-:root {
-    --navy: #12365d;
-    --navy-dark: #0b2440;
-    --blue: #2f6fae;
-    --blue-light: #eaf4fb;
-    --green: #3f8f78;
-    --green-light: #eaf7f2;
-    --white: #ffffff;
-    --off-white: #f7f9fc;
-    --text: #172b3a;
-    --text-light: #637282;
-    --border: #e2e8ef;
-    --shadow-sm: 0 8px 25px rgba(18, 54, 93, 0.08);
-    --shadow-md: 0 18px 45px rgba(18, 54, 93, 0.12);
-    --radius-md: 18px;
-    --radius-lg: 28px;
-    --container: 1200px;
-    --transition: 0.3s ease;
-}
-
-body.dark-mode {
-    --white: #101923;
-    --off-white: #0b131c;
-    --text: #f1f5f9;
-    --text-light: #aab7c4;
-    --border: #263747;
-    --blue-light: #14283a;
-    --green-light: #142c26;
-    --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.25);
-    --shadow-md: 0 18px 45px rgba(0, 0, 0, 0.35);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-}
-
-body {
-    font-family: "DM Sans", sans-serif;
-    background: var(--white);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button, input, select, textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-ul {
-    list-style: none;
-}
-
-.container {
-    width: min(92%, var(--container));
-    margin-inline: auto;
-}
-
-.section {
-    padding: 100px 0;
-}
-
-/* =========================================================
-   ANIMASI NAIK-TURUN (FLOATING ANIMATION)
-========================================================= */
-@keyframes floatSlow {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-14px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes floatReverse {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(14px); }
-    100% { transform: translateY(0px); }
-}
-
-.floating-anim-1 {
-    animation: floatSlow 4.5s ease-in-out infinite;
-}
-
-.floating-anim-2 {
-    animation: floatReverse 5.5s ease-in-out infinite;
-}
-
-/* ANIMASI FADE-IN SAAT SCROLL */
-.fade-in-section {
-    opacity: 0;
-    transform: translateY(35px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in-section.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.fade-in-up {
-    animation: fadeInUp 1s ease forwards;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* NAVIGATION */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid var(--border);
-    backdrop-filter: blur(15px);
-}
-
-body.dark-mode .site-header {
-    background: rgba(16, 25, 35, 0.95);
-}
-
-.nav-container {
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.brand-logo {
-    width: 42px;
-    height: 42px;
-}
-
-.brand-logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.brand-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-name {
-    color: var(--navy);
-    font-family: "Playfair Display", serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-}
-
-body.dark-mode .brand-name {
-    color: #ffffff;
-}
-
-.brand-fullname {
-    color: var(--text-light);
-    font-size: 0.58rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.main-nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-}
-
-.nav-link {
-    color: var(--text-light);
-    font-size: 0.82rem;
-    font-weight: 600;
-    transition: color var(--transition);
-}
-
-.nav-link:hover, .nav-link.active {
-    color: var(--blue);
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.theme-toggle, .menu-toggle {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    background: transparent;
-    color: var(--text);
-    display: grid;
-    place-items: center;
-}
-
-.menu-toggle {
-    display: none;
-}
-
-/* =========================================================
-   BERANDA UTAMA (HERO FULL-SCREEN TERKUNCI ELEGAN)
-========================================================= */
-.hero-fullscreen {
-    min-height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    background: radial-gradient(circle at 80% 20%, rgba(47, 111, 174, 0.12), transparent 40%), var(--off-white);
-    padding: 40px 0;
-    overflow: hidden;
-}
-
-.welcome-speech-large {
-    margin-bottom: 18px;
-}
-
-.welcome-pill {
-    display: inline-block;
-    padding: 8px 18px;
-    background: var(--blue-light);
-    color: var(--blue);
-    font-size: 0.85rem;
-    font-weight: 700;
-    border-radius: 999px;
-    box-shadow: var(--shadow-sm);
-}
-
-.hero-container {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 50px;
-}
-
-.hero-fullscreen h1 {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(2.8rem, 5vw, 4.6rem);
-    color: var(--navy);
-    line-height: 1.1;
-    margin-bottom: 20px;
-}
-
-body.dark-mode .hero-fullscreen h1 {
-    color: #ffffff;
-}
-
-.highlight-text {
-    color: var(--blue);
-}
-
-.hero-description {
-    font-size: 1.05rem;
-    margin-bottom: 30px;
-    color: var(--text-light);
-}
-
-.hero-actions {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 35px;
-}
-
-.hero-visual {
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.hero-image-wrapper {
-    width: min(100%, 460px);
-    border-radius: 120px 30px 30px 30px;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-}
-
-.hero-image {
-    width: 100%;
-    height: 460px;
-    object-fit: cover;
-}
-
-.floating-card {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 14px;
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(10px);
-}
-
-body.dark-mode .floating-card {
-    background: rgba(16, 25, 35, 0.95);
-}
-
-.emergency-card {
-    top: 25px;
-    left: -10px;
-}
-
-.healthcare-card {
-    bottom: 25px;
-    right: -10px;
-}
-
-.status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--green);
-}
-
-.healthcare-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: var(--blue-light);
-    color: var(--blue);
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-}
-
-/* TOMBOL UMUM & GRID LAINNYA */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 48px;
-    padding: 0 24px;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: var(--transition);
-}
-
-.btn-primary {
-    background: var(--navy);
-    color: #ffffff;
-}
-
-.btn-primary:hover {
-    background: var(--blue);
-}
-
-.btn-outline {
-    border: 1px solid var(--border);
-    background: transparent;
-}
-
-.section-label {
-    display: block;
-    color: var(--blue);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 40px;
-}
-
-.section-heading.centered {
-    text-align: center;
-    display: block;
-}
-
-/* QUICK ACCESS */
-.quick-access {
-    margin-top: -35px;
-    position: relative;
-    z-index: 5;
-}
-
-.quick-access-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background: var(--white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
-}
-
-.quick-card {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-right: 1px solid var(--border);
-}
-
-.quick-card:last-child {
-    border-right: none;
-}
-
-.quick-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: var(--blue-light);
-    color: var(--blue);
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-}
-
-/* ABOUT, SERVICES, FACILITIES, DLL */
-.about-grid, .appointment-container, .contact-container, .faq-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.about-image-card {
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-}
-
-.services-grid, .facilities-grid, .information-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
-
-.service-card, .information-card {
-    padding: 25px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-}
-
-.facilities-grid {
-    grid-auto-rows: 240px;
-}
-
-.facility-card {
-    position: relative;
-    border-radius: 18px;
-    overflow: hidden;
-}
-
-.facility-card.large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.facility-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.facility-overlay {
-    position: absolute;
-    inset: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: #fff;
-}
-
-.appointment-section, .contact-section {
-    background: var(--navy-dark);
-    color: #fff;
-}
-
-.appointment-form {
-    background: var(--white);
-    padding: 35px;
-    border-radius: 20px;
-    color: var(--text);
-}
-
-.form-group {
-    margin-bottom: 14px;
-}
-
-.form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-}
-
-.site-footer {
-    background: #081b2e;
-    color: #fff;
-    padding: 50px 0 20px;
-}
-
-.footer-container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    margin-bottom: 30px;
-}
-
-/* RESPONSIVE MOBILE */
-@media (max-width: 900px) {
-    .hero-container, .about-grid, .appointment-container, .contact-container, .faq-container, .footer-container {
-        grid-template-columns: 1fr;
-    }
-    .services-grid, .facilities-grid, .information-grid, .quick-access-grid {
-        grid-template-columns: 1fr;
-    }
-    .main-nav {
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        display: none;
-        flex-direction: column;
-        background: var(--white);
-        padding: 20px;
-        border-bottom: 1px solid var(--border);
-        box-shadow: var(--shadow-md);
-    }
-    .main-nav.open {
-        display: flex;
-    }
-    .menu-toggle {
-        display: grid;
-    }
-    .nav-appointment {
-        display: none;
-    }
-}
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Institut Medika Nusantara — Premium Healthcare dengan pelayanan kesehatan profesional, modern, nyaman, dan terpercaya.">
+    <title>Institut Medika Nusantara | Premium Healthcare</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="#home" class="brand">
+                <div class="brand-logo">
+                    <img src="imn-logo.png" alt="Logo Institut Medika Nusantara">
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">IMN</span>
+                    <span class="brand-fullname">Institut Medika Nusantara</span>
+                </div>
+            </a>
+
+            <nav class="main-nav" id="mainNav">
+                <a href="#home" class="nav-link active">Beranda</a>
+                <a href="#about" class="nav-link">Tentang</a>
+                <a href="#services" class="nav-link">Layanan</a>
+                <a href="#doctors" class="nav-link">Dokter</a>
+                <a href="#facilities" class="nav-link">Fasilitas</a>
+                <a href="#information" class="nav-link">Informasi</a>
+                <a href="#contact" class="nav-link">Kontak</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Ubah tema" type="button">☾</button>
+                <a href="#appointment" class="btn btn-primary nav-appointment">Buat Janji</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false" type="button">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main>
+
+        <!-- =========================
+             BERANDA (HERO FULL-SCREEN)
+        ========================== -->
+        <section id="home" class="hero-fullscreen">
+            <div class="container hero-container">
+                <div class="hero-content fade-in-up">
+                    <div class="welcome-speech-large">
+                        <span class="welcome-pill">✨ Selamat Datang di Institut Medika Nusantara</span>
+                    </div>
+                    <h1>Trust Your Health <span class="highlight-text">with Our Premium Services.</span></h1>
+                    <p class="hero-description">
+                        Menghadirkan pelayanan kesehatan profesional, fasilitas modern, dan pengalaman pelayanan yang mengutamakan kenyamanan serta kebutuhan setiap pasien.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#appointment" class="btn btn-primary">
+                            Buat Janji Temu <span>→</span>
+                        </a>
+                        <a href="#services" class="btn btn-outline">Jelajahi Layanan</a>
+                    </div>
+                </div>
+
+                <!-- HERO VISUAL DENGAN ANIMASI NAIK-TURUN -->
+                <div class="hero-visual fade-in-up">
+                    <div class="hero-image-wrapper floating-anim-1">
+                        <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=1200&auto=format&fit=crop" alt="Institut Medika Nusantara" class="hero-image">
+                    </div>
+
+                    <div class="floating-card emergency-card floating-anim-2">
+                        <span class="status-dot"></span>
+                        <div>
+                            <strong>Emergency Care</strong>
+                            <small>Available 24 Hours</small>
+                        </div>
+                    </div>
+
+                    <div class="floating-card healthcare-card floating-anim-1">
+                        <div class="healthcare-icon">+</div>
+                        <div>
+                            <strong>Premium Healthcare</strong>
+                            <small>Care with Confidence</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             QUICK ACCESS
+        ========================== -->
+        <section class="quick-access">
+            <div class="container">
+                <div class="quick-access-grid fade-in-section">
+                    <a href="#services" class="quick-card">
+                        <span class="quick-icon">+</span>
+                        <div>
+                            <strong>Layanan Kesehatan</strong>
+                            <small>Temukan layanan kami</small>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a href="#doctors" class="quick-card">
+                        <span class="quick-icon">◉</span>
+                        <div>
+                            <strong>Dokter & Profesional</strong>
+                            <small>Kenali tenaga profesional kami</small>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a href="#appointment" class="quick-card">
+                        <span class="quick-icon">□</span>
+                        <div>
+                            <strong>Buat Janji Temu</strong>
+                            <small>Atur jadwal pemeriksaan</small>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <a href="#contact" class="quick-card">
+                        <span class="quick-icon">⌖</span>
+                        <div>
+                            <strong>Hubungi IMN</strong>
+                            <small>Informasi dan bantuan</small>
+                        </div>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+        <section id="about" class="section about-section">
+            <div class="container about-grid">
+                <div class="about-visual fade-in-section">
+                    <div class="about-image-card">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" alt="Fasilitas Institut Medika Nusantara">
+                    </div>
+
+                    <div class="experience-card">
+                        <span class="experience-plus">+</span>
+                        <strong>Premium</strong>
+                        <small>Healthcare Experience</small>
+                    </div>
+                </div>
+
+                <div class="section-content fade-in-section">
+                    <span class="section-label">ABOUT IMN</span>
+                    <h2>Healthcare Designed <span>Around You.</span></h2>
+                    <p>
+                        Institut Medika Nusantara merupakan institusi pelayanan kesehatan yang berkomitmen menghadirkan pelayanan medis berkualitas melalui perpaduan tenaga profesional, fasilitas kesehatan modern, serta pendekatan pelayanan yang mengutamakan kenyamanan dan kebutuhan setiap pasien.
+                    </p>
+                    <p>
+                        Dengan mengusung konsep <strong>Premium Healthcare</strong>, Institut Medika Nusantara menyediakan berbagai layanan kesehatan yang dirancang untuk memberikan pengalaman pelayanan yang aman, nyaman, profesional, dan penuh kepedulian.
+                    </p>
+
+                    <a href="#information" class="text-link">
+                        Mengenal IMN lebih lanjut <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             SERVICES
+        ========================== -->
+        <section id="services" class="section services-section">
+            <div class="container">
+                <div class="section-heading fade-in-section">
+                    <div>
+                        <span class="section-label">OUR SERVICES</span>
+                        <h2>Comprehensive Care, <span>Closer to You.</span></h2>
+                    </div>
+                    <p>Layanan kesehatan IMN dirancang untuk memenuhi kebutuhan kesehatan pasien dengan pendekatan profesional dan humanis.</p>
+                </div>
+
+                <div class="services-grid fade-in-section">
+                    <article class="service-card">
+                        <div class="service-number">01</div>
+                        <div class="service-icon">+</div>
+                        <h3>Poli Umum</h3>
+                        <p>Pemeriksaan kesehatan umum dan konsultasi awal bersama dokter.</p>
+                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-number">02</div>
+                        <div class="service-icon">◉</div>
+                        <h3>Poli Anak</h3>
+                        <p>Pelayanan kesehatan yang berfokus pada kebutuhan kesehatan anak.</p>
+                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-number">03</div>
+                        <div class="service-icon">♡</div>
+                        <h3>Poli Kandungan</h3>
+                        <p>Pelayanan kesehatan ibu dan kandungan bersama tenaga profesional.</p>
+                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <div class="service-number">04</div>
+                        <div class="service-icon">◌</div>
+                        <h3>Poli Jiwa</h3>
+                        <p>Pelayanan kesehatan mental dengan pendekatan yang aman dan suportif.</p>
+                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             DOCTORS
+        ========================== -->
+        <section id="doctors" class="section doctors-section">
+            <div class="container">
+                <div class="section-heading centered fade-in-section">
+                    <span class="section-label">MEDICAL PROFESSIONALS</span>
+                    <h2>Meet Our <span>Healthcare Professionals.</span></h2>
+                    <p>Informasi dokter dan tenaga profesional IMN akan tersedia di halaman ini.</p>
+                </div>
+
+                <div class="doctor-placeholder fade-in-section">
+                    <div class="placeholder-icon">+</div>
+                    <h3>Profil Dokter Segera Hadir</h3>
+                    <p>Informasi mengenai dokter, spesialisasi, jadwal praktik, dan layanan konsultasi akan tersedia di sini.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             FACILITIES
+        ========================== -->
+        <section id="facilities" class="section facilities-section">
+            <div class="container">
+                <div class="section-heading centered fade-in-section">
+                    <span class="section-label">OUR FACILITIES</span>
+                    <h2>Designed for <span>Comfort & Care.</span></h2>
+                </div>
+
+                <div class="facilities-grid fade-in-section">
+                    <article class="facility-card large">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop" alt="Instalasi Gawat Darurat">
+                        <div class="facility-overlay">
+                            <span>01</span>
+                            <h3>Unit Gawat Darurat</h3>
+                            <p>Pelayanan kegawatdaruratan dengan dukungan fasilitas medis.</p>
+                        </div>
+                    </article>
+
+                    <article class="facility-card">
+                        <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?q=80&w=600&auto=format&fit=crop" alt="Apotek Institut Medika Nusantara">
+                        <div class="facility-overlay">
+                            <span>02</span>
+                            <h3>Apotek</h3>
+                        </div>
+                    </article>
+
+                    <article class="facility-card">
+                        <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=600&auto=format&fit=crop" alt="Kamar rawat inap">
+                        <div class="facility-overlay">
+                            <span>03</span>
+                            <h3>Rawat Inap</h3>
+                        </div>
+                    </article>
+
+                    <article class="facility-card">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" alt="Ruang operasi">
+                        <div class="facility-overlay">
+                            <span>04</span>
+                            <h3>Ruang Operasi</h3>
+                        </div>
+                    </article>
+
+                    <article class="facility-card">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=600&auto=format&fit=crop" alt="Ruang pemeriksaan">
+                        <div class="facility-overlay">
+                            <span>05</span>
+                            <h3>Ruang Pemeriksaan</h3>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             APPOINTMENT
+        ========================== -->
+        <section id="appointment" class="section appointment-section">
+            <div class="container appointment-container fade-in-section">
+                <div class="appointment-intro">
+                    <span class="section-label">APPOINTMENT</span>
+                    <h2>Your Health Journey <span>Starts Here.</span></h2>
+                    <p>Atur jadwal pemeriksaan Anda dengan mudah melalui layanan reservasi Institut Medika Nusantara.</p>
+
+                    <div class="appointment-benefits">
+                        <div><span>✓</span> Pilih layanan kesehatan</div>
+                        <div><span>✓</span> Pilih dokter</div>
+                        <div><span>✓</span> Tentukan jadwal</div>
+                    </div>
+                </div>
+
+                <form class="appointment-form" id="appointmentForm">
+                    <div class="form-header">
+                        <span>Appointment Request</span>
+                        <h3>Buat Janji Temu</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patientName">Nama Pasien</label>
+                        <input type="text" id="patientName" name="patientName" placeholder="Masukkan nama" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="service">Layanan</label>
+                            <select id="service" name="service" required>
+                                <option value="">Pilih layanan</option>
+                                <option value="umum">Poli Umum</option>
+                                <option value="anak">Poli Anak</option>
+                                <option value="kandungan">Poli Kandungan</option>
+                                <option value="jiwa">Poli Jiwa</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Tanggal</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Catatan</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tuliskan kebutuhan atau catatan Anda..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-submit">
+                        Kirim Permintaan <span>→</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- =========================
+             INFORMATION
+        ========================== -->
+        <section id="information" class="section information-section">
+            <div class="container">
+                <div class="section-heading centered fade-in-section">
+                    <span class="section-label">INFORMATION</span>
+                    <h2>Information Center</h2>
+                    <p>Temukan informasi penting mengenai pelayanan dan aktivitas Institut Medika Nusantara.</p>
+                </div>
+
+                <div class="information-grid fade-in-section">
+                    <article class="information-card">
+                        <span class="information-tag">PATIENT GUIDE</span>
+                        <h3>Panduan Pasien</h3>
+                        <p>Informasi yang membantu pasien memahami proses pelayanan di IMN.</p>
+                        <a href="#">Buka Patient Guide →</a>
+                    </article>
+
+                    <article class="information-card">
+                        <span class="information-tag">NEWS</span>
+                        <h3>Berita & Pengumuman</h3>
+                        <p>Informasi terbaru mengenai layanan, kegiatan, dan pengumuman IMN.</p>
+                        <a href="#">Lihat informasi →</a>
+                    </article>
+
+                    <article class="information-card">
+                        <span class="information-tag">FEEDBACK</span>
+                        <h3>Feedback & Complaint</h3>
+                        <p>Sampaikan pengalaman, masukan, maupun kebutuhan Anda kepada IMN.</p>
+                        <a href="#contact">Sampaikan feedback →</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             FAQ
+        ========================== -->
+        <section class="section faq-section">
+            <div class="container faq-container fade-in-section">
+                <div class="faq-intro">
+                    <span class="section-label">FAQ</span>
+                    <h2>Frequently Asked <span>Questions.</span></h2>
+                    <p>Temukan jawaban atas pertanyaan yang sering diajukan mengenai layanan IMN.</p>
+                </div>
+
+                <div class="faq-list">
+                    <details>
+                        <summary>Bagaimana cara membuat janji temu? <span>+</span></summary>
+                        <p>Anda dapat menggunakan formulir reservasi pada halaman Buat Janji Temu untuk mengajukan jadwal pemeriksaan.</p>
+                    </details>
+
+                    <details>
+                        <summary>Layanan apa saja yang tersedia? <span>+</span></summary>
+                        <p>Institut Medika Nusantara menyediakan Poli Umum, Poli Anak, Poli Kandungan, dan Poli Jiwa.</p>
+                    </details>
+
+                    <details>
+                        <summary>Bagaimana cara menghubungi IMN? <span>+</span></summary>
+                        <p>Anda dapat menghubungi Institut Medika Nusantara melalui informasi kontak yang tersedia pada bagian Kontak.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+        <section id="contact" class="contact-section">
+            <div class="container contact-container fade-in-section">
+                <div class="contact-content">
+                    <span class="section-label light">CONTACT IMN</span>
+                    <h2>We're Here <span>When You Need Us.</span></h2>
+                    <p>Hubungi Institut Medika Nusantara untuk mendapatkan informasi mengenai layanan dan pelayanan kesehatan.</p>
+                </div>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon">⌖</span>
+                        <div>
+                            <small>ADDRESS</small>
+                            <p>No. 88, Central Healthcare District.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">☎</span>
+                        <div>
+                            <small>PHONE</small>
+                            <p>+62 896-7332-0727</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">@</span>
+                        <div>
+                            <small>EMAIL</small>
+                            <p>rsinstitutmedikanusantara@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span class="contact-icon">◷</span>
+                        <div>
+                            <small>OPERATING HOURS</small>
+                            <p>Senin – Jumat | 10.00 – 20.00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <div class="brand">
+                    <div class="brand-logo">
+                        <img src="imn-logo.png" alt="Logo Institut Medika Nusantara">
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-name">IMN</span>
+                        <span class="brand-fullname">Institut Medika Nusantara</span>
+                    </div>
+                </div>
+                <p>Trust your Health with Our Premium Services.</p>
+            </div>
+
+            <div class="footer-links">
+                <div>
+                    <h4>Navigation</h4>
+                    <a href="#about">Tentang</a>
+                    <a href="#services">Layanan</a>
+                    <a href="#doctors">Dokter</a>
+                    <a href="#facilities">Fasilitas</a>
+                </div>
+
+                <div>
+                    <h4>Information</h4>
+                    <a href="#information">Patient Guide</a>
+                    <a href="#information">Berita</a>
+                    <a href="#information">Feedback</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© 2026 Institut Medika Nusantara. All Rights Reserved.</p>
+            <p>Premium Healthcare</p>
+        </div>
+    </footer>
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script src="script.js"></script>
+
+</body>
+</html>

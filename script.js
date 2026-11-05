@@ -42,20 +42,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. APPOINTMENT FORM
+    // 3. APPOINTMENT FORM TERHUBUNG KE WHATSAPP
     const appointmentForm = document.getElementById('appointmentForm');
     if (appointmentForm) {
         appointmentForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const patientName = document.getElementById('patientName').value;
+            
+            const patientName = document.getElementById('patientName').value.trim();
             const service = document.getElementById('service').value;
             const date = document.getElementById('date').value;
+            const message = document.getElementById('message').value.trim();
 
             if (patientName && service && date) {
-                alert(`Terima kasih, ${patientName}! Permintaan janji temu untuk ${service.toUpperCase()} pada tanggal ${date} telah berhasil dikirim.`);
+                // Nomor WhatsApp tujuan (sesuai nomor yang terlampir di website)
+                const whatsappNumber = "6289673320727"; 
+
+                // Format teks pesan yang akan dikirim otomatis ke WhatsApp
+                const text = `Halo Institut Medika Nusantara,\n\nSaya ingin mengajukan permohonan Janji Temu dengan detail berikut:\n\n` +
+                             `• *Nama Pasien*: ${patientName}\n` +
+                             `• *Layanan*: Poli ${service.toUpperCase()}\n` +
+                             `• *Tanggal Rencana*: ${date}\n` +
+                             `• *Catatan*: ${message ? message : '-'}\n\n` +
+                             `Mohon konfirmasinya. Terima kasih.`;
+
+                // Encode teks agar aman dibaca oleh URL WhatsApp
+                const encodedText = encodeURIComponent(text);
+
+                // Buat link WhatsApp API
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+
+                // Buka WhatsApp di tab/aplikasi baru
+                window.open(whatsappURL, '_blank');
+                
+                // Reset form setelah dikirim
                 appointmentForm.reset();
             } else {
-                alert('Mohon lengkapi formulir terlebih dahulu.');
+                alert('Mohon lengkapi data nama, layanan, dan tanggal terlebih dahulu.');
             }
         });
     }

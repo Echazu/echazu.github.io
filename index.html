@@ -7,10 +7,10 @@
     <meta name="description" content="Institut Medika Nusantara — Premium Healthcare dengan pelayanan kesehatan profesional, modern, nyaman, dan terpercaya.">
     <title>Institut Medika Nusantara | Premium Healthcare</title>
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -19,13 +19,13 @@
 <body>
 
     <!-- =========================
-         NAVIGATION
+         NAVIGATION HEADER
     ========================== -->
     <header class="site-header">
         <div class="container nav-container">
             <a href="#home" class="brand">
                 <div class="brand-logo">
-                    <img src="imn-logo.png" alt="Logo Institut Medika Nusantara">
+                    <img src="imn-logo.png" alt="Logo IMN">
                 </div>
                 <div class="brand-text">
                     <span class="brand-name">IMN</span>
@@ -57,13 +57,14 @@
     <main>
 
         <!-- =========================
-             BERANDA (HERO FULL-SCREEN)
+             HERO SECTION (BERANDA)
         ========================== -->
         <section id="home" class="hero-fullscreen">
             <div class="container hero-container">
-                <div class="hero-content fade-in-up">
-                    <div class="welcome-speech-large">
-                        <span class="welcome-pill">✨ Selamat Datang di Institut Medika Nusantara</span>
+                <div class="hero-content">
+                    <div class="welcome-pill">
+                        <span class="pill-dot"></span>
+                        <span>Selamat Datang di Institut Medika Nusantara</span>
                     </div>
                     <h1>Trust Your Health <span class="highlight-text">with Our Premium Services.</span></h1>
                     <p class="hero-description">
@@ -72,19 +73,36 @@
 
                     <div class="hero-actions">
                         <a href="#appointment" class="btn btn-primary">
-                            Buat Janji Temu <span>→</span>
+                            Buat Janji Temu <span class="arrow-icon">→</span>
                         </a>
                         <a href="#services" class="btn btn-outline">Jelajahi Layanan</a>
                     </div>
+
+                    <div class="hero-trust">
+                        <div class="trust-item">
+                            <span class="trust-check">✓</span>
+                            <div>
+                                <strong>Professional</strong>
+                                <small>Healthcare Team</small>
+                            </div>
+                        </div>
+                        <div class="trust-item">
+                            <span class="trust-check">✓</span>
+                            <div>
+                                <strong>Modern</strong>
+                                <small>Healthcare Facilities</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- HERO VISUAL DENGAN ANIMASI NAIK-TURUN -->
-                <div class="hero-visual fade-in-up">
-                    <div class="hero-image-wrapper floating-anim-1">
+                <!-- HERO VISUAL WITH ANIMATION -->
+                <div class="hero-visual">
+                    <div class="hero-image-wrapper">
                         <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=1200&auto=format&fit=crop" alt="Institut Medika Nusantara" class="hero-image">
                     </div>
 
-                    <div class="floating-card emergency-card floating-anim-2">
+                    <div class="floating-card emergency-card float-anim-1">
                         <span class="status-dot"></span>
                         <div>
                             <strong>Emergency Care</strong>
@@ -92,7 +110,7 @@
                         </div>
                     </div>
 
-                    <div class="floating-card healthcare-card floating-anim-1">
+                    <div class="floating-card healthcare-card float-anim-2">
                         <div class="healthcare-icon">+</div>
                         <div>
                             <strong>Premium Healthcare</strong>
@@ -108,7 +126,7 @@
         ========================== -->
         <section class="quick-access">
             <div class="container">
-                <div class="quick-access-grid fade-in-section">
+                <div class="quick-access-grid reveal">
                     <a href="#services" class="quick-card">
                         <span class="quick-icon">+</span>
                         <div>
@@ -153,19 +171,18 @@
         ========================== -->
         <section id="about" class="section about-section">
             <div class="container about-grid">
-                <div class="about-visual fade-in-section">
+                <div class="about-visual reveal">
                     <div class="about-image-card">
-                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" alt="Fasilitas Institut Medika Nusantara">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1000&auto=format&fit=crop" alt="Fasilitas IMN">
                     </div>
-
                     <div class="experience-card">
-                        <span class="experience-plus">+</span>
+                        <span class="exp-badge">+</span>
                         <strong>Premium</strong>
                         <small>Healthcare Experience</small>
                     </div>
                 </div>
 
-                <div class="section-content fade-in-section">
+                <div class="section-content reveal">
                     <span class="section-label">ABOUT IMN</span>
                     <h2>Healthcare Designed <span>Around You.</span></h2>
                     <p>
@@ -174,10 +191,7 @@
                     <p>
                         Dengan mengusung konsep <strong>Premium Healthcare</strong>, Institut Medika Nusantara menyediakan berbagai layanan kesehatan yang dirancang untuk memberikan pengalaman pelayanan yang aman, nyaman, profesional, dan penuh kepedulian.
                     </p>
-
-                    <a href="#information" class="text-link">
-                        Mengenal IMN lebih lanjut <span>→</span>
-                    </a>
+                    <a href="#information" class="text-link">Mengenal IMN lebih lanjut →</a>
                 </div>
             </div>
         </section>
@@ -187,7 +201,7 @@
         ========================== -->
         <section id="services" class="section services-section">
             <div class="container">
-                <div class="section-heading fade-in-section">
+                <div class="section-heading reveal">
                     <div>
                         <span class="section-label">OUR SERVICES</span>
                         <h2>Comprehensive Care, <span>Closer to You.</span></h2>
@@ -195,37 +209,37 @@
                     <p>Layanan kesehatan IMN dirancang untuk memenuhi kebutuhan kesehatan pasien dengan pendekatan profesional dan humanis.</p>
                 </div>
 
-                <div class="services-grid fade-in-section">
+                <div class="services-grid reveal">
                     <article class="service-card">
-                        <div class="service-number">01</div>
+                        <span class="service-number">01</span>
                         <div class="service-icon">+</div>
                         <h3>Poli Umum</h3>
                         <p>Pemeriksaan kesehatan umum dan konsultasi awal bersama dokter.</p>
-                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                        <a href="#appointment" class="service-link">Lihat layanan →</a>
                     </article>
 
                     <article class="service-card">
-                        <div class="service-number">02</div>
+                        <span class="service-number">02</span>
                         <div class="service-icon">◉</div>
                         <h3>Poli Anak</h3>
                         <p>Pelayanan kesehatan yang berfokus pada kebutuhan kesehatan anak.</p>
-                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                        <a href="#appointment" class="service-link">Lihat layanan →</a>
                     </article>
 
                     <article class="service-card">
-                        <div class="service-number">03</div>
+                        <span class="service-number">03</span>
                         <div class="service-icon">♡</div>
                         <h3>Poli Kandungan</h3>
                         <p>Pelayanan kesehatan ibu dan kandungan bersama tenaga profesional.</p>
-                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                        <a href="#appointment" class="service-link">Lihat layanan →</a>
                     </article>
 
                     <article class="service-card">
-                        <div class="service-number">04</div>
+                        <span class="service-number">04</span>
                         <div class="service-icon">◌</div>
                         <h3>Poli Jiwa</h3>
                         <p>Pelayanan kesehatan mental dengan pendekatan yang aman dan suportif.</p>
-                        <a href="#appointment" class="service-link">Lihat layanan <span>→</span></a>
+                        <a href="#appointment" class="service-link">Lihat layanan →</a>
                     </article>
                 </div>
             </div>
@@ -236,13 +250,13 @@
         ========================== -->
         <section id="doctors" class="section doctors-section">
             <div class="container">
-                <div class="section-heading centered fade-in-section">
+                <div class="section-heading centered reveal">
                     <span class="section-label">MEDICAL PROFESSIONALS</span>
                     <h2>Meet Our <span>Healthcare Professionals.</span></h2>
                     <p>Informasi dokter dan tenaga profesional IMN akan tersedia di halaman ini.</p>
                 </div>
 
-                <div class="doctor-placeholder fade-in-section">
+                <div class="doctor-placeholder reveal">
                     <div class="placeholder-icon">+</div>
                     <h3>Profil Dokter Segera Hadir</h3>
                     <p>Informasi mengenai dokter, spesialisasi, jadwal praktik, dan layanan konsultasi akan tersedia di sini.</p>
@@ -255,14 +269,14 @@
         ========================== -->
         <section id="facilities" class="section facilities-section">
             <div class="container">
-                <div class="section-heading centered fade-in-section">
+                <div class="section-heading centered reveal">
                     <span class="section-label">OUR FACILITIES</span>
                     <h2>Designed for <span>Comfort & Care.</span></h2>
                 </div>
 
-                <div class="facilities-grid fade-in-section">
+                <div class="facilities-grid reveal">
                     <article class="facility-card large">
-                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop" alt="Instalasi Gawat Darurat">
+                        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop" alt="UGD">
                         <div class="facility-overlay">
                             <span>01</span>
                             <h3>Unit Gawat Darurat</h3>
@@ -271,7 +285,7 @@
                     </article>
 
                     <article class="facility-card">
-                        <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?q=80&w=600&auto=format&fit=crop" alt="Apotek Institut Medika Nusantara">
+                        <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?q=80&w=600&auto=format&fit=crop" alt="Apotek">
                         <div class="facility-overlay">
                             <span>02</span>
                             <h3>Apotek</h3>
@@ -279,7 +293,7 @@
                     </article>
 
                     <article class="facility-card">
-                        <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=600&auto=format&fit=crop" alt="Kamar rawat inap">
+                        <img src="https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=600&auto=format&fit=crop" alt="Rawat Inap">
                         <div class="facility-overlay">
                             <span>03</span>
                             <h3>Rawat Inap</h3>
@@ -287,7 +301,7 @@
                     </article>
 
                     <article class="facility-card">
-                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" alt="Ruang operasi">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=600&auto=format&fit=crop" alt="Ruang Operasi">
                         <div class="facility-overlay">
                             <span>04</span>
                             <h3>Ruang Operasi</h3>
@@ -295,7 +309,7 @@
                     </article>
 
                     <article class="facility-card">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=600&auto=format&fit=crop" alt="Ruang pemeriksaan">
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=600&auto=format&fit=crop" alt="Ruang Pemeriksaan">
                         <div class="facility-overlay">
                             <span>05</span>
                             <h3>Ruang Pemeriksaan</h3>
@@ -309,28 +323,28 @@
              APPOINTMENT
         ========================== -->
         <section id="appointment" class="section appointment-section">
-            <div class="container appointment-container fade-in-section">
+            <div class="container appointment-container reveal">
                 <div class="appointment-intro">
-                    <span class="section-label">APPOINTMENT</span>
+                    <span class="section-label light">APPOINTMENT</span>
                     <h2>Your Health Journey <span>Starts Here.</span></h2>
                     <p>Atur jadwal pemeriksaan Anda dengan mudah melalui layanan reservasi Institut Medika Nusantara.</p>
 
                     <div class="appointment-benefits">
-                        <div><span>✓</span> Pilih layanan kesehatan</div>
-                        <div><span>✓</span> Pilih dokter</div>
-                        <div><span>✓</span> Tentukan jadwal</div>
+                        <div><span class="check-icon">✓</span> Pilih layanan kesehatan</div>
+                        <div><span class="check-icon">✓</span> Pilih dokter</div>
+                        <div><span class="check-icon">✓</span> Tentukan jadwal</div>
                     </div>
                 </div>
 
                 <form class="appointment-form" id="appointmentForm">
                     <div class="form-header">
-                        <span>Appointment Request</span>
+                        <span>APPOINTMENT REQUEST</span>
                         <h3>Buat Janji Temu</h3>
                     </div>
 
                     <div class="form-group">
                         <label for="patientName">Nama Pasien</label>
-                        <input type="text" id="patientName" name="patientName" placeholder="Masukkan nama" required>
+                        <input type="text" id="patientName" name="patientName" placeholder="Masukkan nama lengkap" required>
                     </div>
 
                     <div class="form-row">
@@ -352,12 +366,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Catatan</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tuliskan kebutuhan atau catatan Anda..."></textarea>
+                        <label for="message">Catatan Tambahan</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Tuliskan keluhan atau kelengkapan pesan..."></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary form-submit">
-                        Kirim Permintaan <span>→</span>
+                        Kirim Permintaan →
                     </button>
                 </form>
             </div>
@@ -368,29 +382,29 @@
         ========================== -->
         <section id="information" class="section information-section">
             <div class="container">
-                <div class="section-heading centered fade-in-section">
+                <div class="section-heading centered reveal">
                     <span class="section-label">INFORMATION</span>
                     <h2>Information Center</h2>
                     <p>Temukan informasi penting mengenai pelayanan dan aktivitas Institut Medika Nusantara.</p>
                 </div>
 
-                <div class="information-grid fade-in-section">
+                <div class="information-grid reveal">
                     <article class="information-card">
-                        <span class="information-tag">PATIENT GUIDE</span>
+                        <span class="info-tag">PATIENT GUIDE</span>
                         <h3>Panduan Pasien</h3>
                         <p>Informasi yang membantu pasien memahami proses pelayanan di IMN.</p>
                         <a href="#">Buka Patient Guide →</a>
                     </article>
 
                     <article class="information-card">
-                        <span class="information-tag">NEWS</span>
+                        <span class="info-tag">NEWS</span>
                         <h3>Berita & Pengumuman</h3>
                         <p>Informasi terbaru mengenai layanan, kegiatan, dan pengumuman IMN.</p>
                         <a href="#">Lihat informasi →</a>
                     </article>
 
                     <article class="information-card">
-                        <span class="information-tag">FEEDBACK</span>
+                        <span class="info-tag">FEEDBACK</span>
                         <h3>Feedback & Complaint</h3>
                         <p>Sampaikan pengalaman, masukan, maupun kebutuhan Anda kepada IMN.</p>
                         <a href="#contact">Sampaikan feedback →</a>
@@ -403,7 +417,7 @@
              FAQ
         ========================== -->
         <section class="section faq-section">
-            <div class="container faq-container fade-in-section">
+            <div class="container faq-container reveal">
                 <div class="faq-intro">
                     <span class="section-label">FAQ</span>
                     <h2>Frequently Asked <span>Questions.</span></h2>
@@ -433,7 +447,7 @@
              CONTACT
         ========================== -->
         <section id="contact" class="contact-section">
-            <div class="container contact-container fade-in-section">
+            <div class="container contact-container reveal">
                 <div class="contact-content">
                     <span class="section-label light">CONTACT IMN</span>
                     <h2>We're Here <span>When You Need Us.</span></h2>
@@ -486,7 +500,7 @@
             <div class="footer-brand">
                 <div class="brand">
                     <div class="brand-logo">
-                        <img src="imn-logo.png" alt="Logo Institut Medika Nusantara">
+                        <img src="imn-logo.png" alt="Logo IMN">
                     </div>
                     <div class="brand-text">
                         <span class="brand-name">IMN</span>
@@ -521,9 +535,7 @@
         </div>
     </footer>
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
+    <!-- JS -->
     <script src="script.js"></script>
 
 </body>

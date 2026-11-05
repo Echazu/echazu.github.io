@@ -1,0 +1,95 @@
+// ==========================================
+// INSTITUT MEDIKA NUSANTARA - INTERACTIVE JS
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. MOBILE MENU TOGGLE (Hamburger Menu)
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            menuToggle.textContent = isExpanded ? '☰' : '✕';
+        });
+
+        // Tutup menu saat link diklik (untuk layar HP)
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.textContent = '☰';
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+    // 2. DARK MODE TOGGLE
+    const themeToggle = document.getElementById('themeToggle');
+    
+    // Cek preferensi tema sebelumnya di localStorage
+    const savedTheme = localStorage.getItem('imn_theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (themeToggle) themeToggle.textContent = '☀';
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            // Ubah ikon tombol
+            themeToggle.textContent = isDarkMode ? '☀' : '☾';
+            
+            // Simpan preferensi ke local storage
+            localStorage.setItem('imn_theme', isDarkMode ? 'dark' : 'light');
+        });
+    }
+
+    // 3. APPOINTMENT FORM HANDLING (Notifikasi Simulasi Reservasi)
+    const appointmentForm = document.getElementById('appointmentForm');
+
+    if (appointmentForm) {
+        appointmentForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Mencegah reload halaman secara default
+
+            const patientName = document.getElementById('patientName').value;
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+
+            if (patientName && service && date) {
+                alert(`Terima kasih, ${patientName}! Permintaan janji temu untuk ${service.toUpperCase()} pada tanggal ${date} telah berhasil dikirim. Tim IMN akan segera menghubungi Anda.`);
+                appointmentForm.reset(); // Reset form setelah dikirim
+            } else {
+                alert('Mohon lengkapi data formulir terlebih dahulu.');
+            }
+        });
+    }
+
+    // 4. ACTIVE NAVIGATION HIGHLIGHT ON SCROLL
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.main-nav .nav-link');
+
+    window.addEventListener('scroll', () => {
+        let scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    });
+
+});
